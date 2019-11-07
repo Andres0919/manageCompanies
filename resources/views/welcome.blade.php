@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Manage Companies
                 </div>
 
                 <div class="links">
