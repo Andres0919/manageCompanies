@@ -80,7 +80,10 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $company->update($request->all());
+  
+        return redirect()->route('companies.index')
+                        ->with('success','Company updated successfully');
     }
 
     /**
@@ -92,5 +95,9 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         //
+        $company->delete();
+  
+        return redirect()->route('companies.index')
+                        ->with('success','Company deleted successfully');
     }
 }
