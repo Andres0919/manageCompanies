@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Add a new company</div>
+                <div class="card-header">Edit company</div>
 
                 <div class="card-body">
                     <a class="btn btn-primary" href="{{ route('companies.index') }}"> Back</a>
@@ -21,7 +21,7 @@
                         </div>
                     @endif
 
-                    {!! Form::model($company, ['route' => ['companies.update', $company->id],'method' => 'PUT']) !!}
+                    {!! Form::model($company, ['route' => ['companies.update', $company->id],'method' => 'PUT', 'files' => true]) !!}
 
                     @include('companies.partials.form')
 

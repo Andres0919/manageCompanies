@@ -42,7 +42,11 @@ class CompanyController extends Controller
         //     'name' => 'required',
         //     'detail' => 'required',
         // ]);
-        Company::create($request->all());
+        $file = $request->Logo;
+        $company = Company::create($request->all());
+        $store = $file->store('/public/logos');
+        $path = '/storage/logos/'.explode( '/', $store)[2];
+        $company->update(['Logo' => $path]);
    
         return redirect()->route('companies.index')
                         ->with('success','Company created successfully.');
@@ -80,7 +84,21 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        $company->update($request->all());
+        if(!empty($request->Logo)){
+            $file = $request->Logo;
+            $store = $file->store('/public/logos');
+            $path = '/storage/logos/'.explode('/', $store)[2];
+            $logo = $path;
+        }else{
+            $logo = $company->Logo;
+        }
+        
+        $company->update([
+            'Name' => $request->Name,
+            'Email' => $request->Email,
+            'Logo' => $logo,
+            'WebSite' => $request->WebSite
+        ]);
   
         return redirect()->route('companies.index')
                         ->with('success','Company updated successfully');

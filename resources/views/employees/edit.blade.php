@@ -5,10 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Add a new company</div>
+                <div class="card-header">Edit Employee</div>
 
                 <div class="card-body">
-                    <a class="btn btn-primary" href="{{ route('companies.index') }}"> Back</a>
+                    <a class="btn btn-primary" href="{{ route('employees.index') }}"> Back</a>
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -20,11 +20,13 @@
                             </ul>
                         </div>
                     @endif
-                    {!! Form::open(['route' =>'companies.store', 'files' => true ]) !!}
 
-                       @include('companies.partials.form')
+                    {!! Form::model($employee, ['route' => ['employees.update', $employee->id],'method' => 'PUT']) !!}
+
+                    @include('employees.partials.form')
 
                     {!! Form::close() !!}
+                    
                 </div>
             </div>
         </div>
