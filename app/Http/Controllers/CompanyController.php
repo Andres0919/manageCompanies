@@ -38,10 +38,8 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         //
-        // $request->validate([
-        //     'name' => 'required',
-        //     'detail' => 'required',
-        // ]);
+        $this->validateInputs($request);
+        
         $file = $request->Logo;
         $company = Company::create($request->all());
         $store = $file->store('/public/logos');
@@ -84,6 +82,8 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
+        $this->validateInputs($request);
+
         if(!empty($request->Logo)){
             $file = $request->Logo;
             $store = $file->store('/public/logos');
@@ -117,5 +117,12 @@ class CompanyController extends Controller
   
         return redirect()->route('companies.index')
                         ->with('success','Company deleted successfully');
+    }
+
+    private function validateInputs($request){
+        $request->validate([
+            'Name' => 'required',
+            'Logo' => 'dimensions:min_width=100,min_height=100'
+        ]);
     }
 }

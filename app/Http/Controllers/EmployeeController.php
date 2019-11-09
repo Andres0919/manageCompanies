@@ -42,6 +42,8 @@ class EmployeeController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validateInputs($request);
+
         Employee::create($request->all());
    
         return redirect()->route('employees.index')
@@ -82,6 +84,8 @@ class EmployeeController extends Controller
     public function update(Request $request, Employee $employee)
     {
         //
+        $this->validateInputs($request);
+
         $employee->update($request->all());
   
         return redirect()->route('employees.index')
@@ -101,5 +105,12 @@ class EmployeeController extends Controller
   
         return redirect()->route('employees.index')
                         ->with('success','Employee deleted successfully');
+    }
+
+    private function validateInputs($request){
+        $request->validate([
+            'FirstName' => 'required',
+            'LastName' => 'required'
+        ]);
     }
 }
