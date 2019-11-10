@@ -11,7 +11,7 @@
                     <a href="{{ route('companies.create') }}" class="btn btn-success my-2">
                         Create new company
                     </a>
-                    <table class="table table-bordered table-responsive-sm table-hover">
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>
@@ -28,7 +28,8 @@
                                 <td>{{ $company->id }}</td>
                                 <td>{{ $company->Name }}</td>
                                 <td>{{ $company->Email }}</td>
-                                <td>{{ $company->Logo }}</td>
+                                <td>
+                                    <a class="btn btn-link" target="_blank" href="{{ $company->Logo }}">show logo</a>
                                 <td>{{ $company->WebSite }}</td>
                                 <td>
                                     <a href="{{ route('companies.edit', $company->id)}}" class="btn btn-sm btn-primary my-2">Edit</a>

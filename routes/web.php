@@ -21,3 +21,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('companies', 'CompanyController');
 Route::resource('employees', 'EmployeeController');
+
+Route::get('/console', function () {
+    Artisan::call('migrate:refresh', [
+        '--force' => true,
+    ]);
+
+    Artisan::call('db:seed');
+
+    return redirect('/');
+});
+
+

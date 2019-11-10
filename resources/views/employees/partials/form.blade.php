@@ -26,7 +26,7 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            {!! Form::label('Phone', 'Phone:') !!}
+            {!! Form::label('Phone', 'Phone Number:') !!}
             {!! Form::text('Phone', null, ['class' => 'form-control', 'placeholder' => 'Phone']) !!}
         </div>
     </div>
