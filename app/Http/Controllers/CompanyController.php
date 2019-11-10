@@ -14,6 +14,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
+        
         $companies = Company::paginate(10);
 
         return view('companies.index', compact('companies'));
@@ -45,6 +46,9 @@ class CompanyController extends Controller
         $store = $file->store('/public/logos');
         $path = '/storage/logos/'.explode( '/', $store)[2];
         $company->update(['Logo' => $path]);
+
+        $this->sendEmail($request->Name);
+        
    
         return redirect()->route('companies.index')
                         ->with('success','Company created successfully.');
@@ -67,8 +71,7 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function edit(Company $company)
-    {
+    public function edit(Company $company){
         //
         return view('companies.edit',compact('company'));
     }
@@ -80,8 +83,7 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
-    {
+    public function update(Request $request, Company $company){
         $this->validateInputs($request);
 
         if(!empty($request->Logo)){
@@ -110,8 +112,7 @@ class CompanyController extends Controller
      * @param  \App\Models\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Company $company)
-    {
+    public function destroy(Company $company){
         //
         $company->delete();
   
@@ -124,5 +125,22 @@ class CompanyController extends Controller
             'Name' => 'required',
             'Logo' => 'dimensions:min_width=100,min_height=100'
         ]);
+    }
+
+    private function sendEmail($nameCompany){
+        $data = [
+            'email' => 'andres.posada0919@gmail.com',
+            'name_email' => 'Andrés posada',
+            'subject' => 'New Company',
+            'name' => $nameCompany
+        ];
+
+        \Mail::send('emails.message', $data, function($message) use ($data){
+            $message->from($data['email'], $data['name_email']);
+    
+            $message->subject($data['subject']);
+    
+            $message->to($data['email'], $data['name_email']);
+        });
     }
 }
