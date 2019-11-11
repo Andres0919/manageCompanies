@@ -71,49 +71,46 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                        <a href="{{ url('/companies') }}">Companies</a>
-                        <a href="{{ url('/employees') }}">Employees</a>
+                        <a href="{{ url('/home') }}">{{ trans('messages.home') }}</a>
+                        <a href="{{ url('/companies') }}">{{ trans('messages.companies') }}</a>
+                        <a href="{{ url('/employees') }}">{{ trans('messages.employees') }}</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">{{ trans('messages.login') }}</a>
                     @endauth
+                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ trans('messages.lang') }}
+                            <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/lang/en">
+                                EN
+                            </a>
+                            <a class="dropdown-item" href="/lang/es">
+                                ES
+                            </a>
+                        </div>
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Manage Companies
+                    {{ trans('messages.title') }}
                 </div>
             </div>
         </div>
     </body>
-    <script src="adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js')}}"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="{{ asset('adminlte/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
     $.widget.bridge('uibutton', $.ui.button);
     </script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <!-- ChartJS -->
-    <script src="{{ asset('adminlte/plugins/chart.js/Chart.min.js')}}"></script>
-    <!-- Sparkline -->
-    <script src="{{ asset('adminlte/plugins/sparklines/sparkline.js')}}"></script>
-    <!-- JQVMap -->
-    <script src="{{ asset('adminlte/plugins/jqvmap/jquery.vmap.min.js')}}"></script>
-    <script src="{{ asset('adminlte/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="{{ asset('adminlte/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
     <!-- daterangepicker -->
     <script src="{{ asset('adminlte/plugins/moment/moment.min.js')}}"></script>
-    <script src="{{ asset('adminlte/plugins/daterangepicker/daterangepicker.js')}}"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="{{ asset('adminlte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-    <!-- Summernote -->
-    <script src="{{ asset('adminlte/plugins/summernote/summernote-bs4.min.js')}}"></script>
-    <!-- overlayScrollbars -->
-    <script src="{{ asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('adminlte/js/adminlte.js')}}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
