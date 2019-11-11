@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            {!! Form::label('Name', 'Name:') !!}
-            {!! Form::text('Name', null, ['class' => 'form-control','placeholder' => 'Name', 'required' => 'required']) !!}
+            {!! Form::label('Name', trans('messages.name').':') !!}
+            {!! Form::text('Name', null, ['class' => 'form-control','placeholder' => trans('messages.name'), 'required' => 'required']) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            {!! Form::label('Email', 'Email:') !!}
-            {!! Form::email('Email', null, ['class' => 'form-control', 'placeholder' => 'Email']) !!}
+            {!! Form::label('Email', trans('messages.email').':') !!}
+            {!! Form::email('Email', null, ['class' => 'form-control', 'placeholder' => trans('messages.email')]) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -19,11 +19,11 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            {!! Form::label('WebSite', 'Web Site:') !!}
-            {!! Form::text('WebSite', null, ['class' => 'form-control', 'placeholder' => 'Web Site']) !!}
+            {!! Form::label('WebSite', trans('messages.web').':') !!}
+            {!! Form::text('WebSite', null, ['class' => 'form-control', 'placeholder' => trans('messages.web')]) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">{{trans('messages.submit')}}</button>
     </div>
 </div>
