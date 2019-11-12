@@ -27,4 +27,5 @@ return [
     'submit' => 'Enviar',
     'title' => 'Gestionar Empresas',
     'web' => 'Sitio web',
+    'welcome' => 'Hola, ¡gracias por visitarnos!',
 ];
