@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    Hi, thank you for visiting us!
+                    {{ trans('messages.welcome') }}
                 </div>
             </div>
         </div>

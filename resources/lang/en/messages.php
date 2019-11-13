@@ -27,4 +27,5 @@ return [
     'submit' => 'Submit',
     'title' => 'Manage Companies',
     'web' => 'Web site',
+    'welcome' => 'Hi, thank you for visiting us!',
 ];
