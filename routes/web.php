@@ -19,6 +19,12 @@ Route::middleware(['locate'])->group(function() {
 
     Auth::routes();
 
+    Route::get('/lang/{locale}', function ($locale){
+        Session::put('locale', $locale);
+
+        return view('welcome');
+    });
+
     Route::middleware(['auth'])->group(function(){
         Route::get('/home', 'HomeController@index')->name('home');
     
@@ -49,11 +55,5 @@ Route::middleware(['locate'])->group(function() {
             return redirect('/');
         });
         
-    
-        Route::get('/lang/{locale}', function ($locale){
-            Session::put('locale', $locale);
-    
-            return back();
-        });
     });    
 });
